@@ -189,16 +189,19 @@
     display:none; align-items:center; justify-content:center;
     z-index:200; padding:18px;
   }
-  .modal.open{display:flex;}
+  .modal.open{display:flex; overflow:hidden;}
   .cv-modal .modal-box{
-    grid-template-columns:1fr;
+    display:flex; flex-direction:column;
     width:min(780px,100%);
+    max-height:92vh;
+    overflow:hidden;
     position:relative;
   }
   .cv-pages{
+    flex:1; min-height:0;
     padding:48px 18px 20px;
     display:flex; flex-direction:column; gap:14px;
-    max-height:92vh; overflow:auto;
+    overflow:auto;
   }
   .cv-pages img{
     width:100%; height:auto; border-radius:10px;
@@ -206,7 +209,7 @@
   }
   .cv-actions{text-align:center; margin:4px 0 8px;}
   .cv-actions a{color:var(--accent); font-weight:600;}
-  .btn.primary{cursor:pointer;}
+  html.modal-open, html.modal-open body{overflow:hidden; height:100%;}
   .modal-box{
     width:min(1080px,100%); max-height:92vh;
     overflow:auto;
@@ -717,9 +720,13 @@ function stopModalVideo(){
   modalVideo.removeAttribute('src');
   modalVideo.load();
 }
+function setScrollLock(on){
+  document.documentElement.classList.toggle('modal-open', on);
+}
 function closeModal(){
   stopModalVideo();
   modal.classList.remove('open');
+  setScrollLock(false);
 }
 function openModal(p){
   active=p;
@@ -735,6 +742,7 @@ function openModal(p){
   else {a.style.display='none';}
   drawGallery();
   modal.classList.add('open');
+  setScrollLock(true);
 }
 function drawGallery(){
   const imgs=active.images.length?active.images:(active.cover?[active.cover]:[]);
@@ -786,8 +794,12 @@ const cvModal=document.getElementById('cvModal');
 function openCv(e){
   e.preventDefault();
   cvModal.classList.add('open');
+  setScrollLock(true);
 }
-function closeCv(){cvModal.classList.remove('open');}
+function closeCv(){
+  cvModal.classList.remove('open');
+  setScrollLock(false);
+}
 document.getElementById('cvBtn').addEventListener('click',openCv);
 document.getElementById('cvClose').onclick=closeCv;
 cvModal.addEventListener('click',e=>{if(e.target===cvModal)closeCv();});
