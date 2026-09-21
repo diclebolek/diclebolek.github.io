@@ -197,9 +197,24 @@
     overflow:hidden;
     position:relative;
   }
+  .cv-toolbar{
+    position:absolute; top:12px; right:12px; z-index:3;
+    display:flex; align-items:center; gap:8px;
+  }
+  .cv-download{
+    display:inline-flex; align-items:center; justify-content:center;
+    height:36px; padding:0 14px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.1);
+    color:#fff; font-size:.85rem; font-weight:600;
+    text-decoration:none; white-space:nowrap;
+  }
+  .cv-download:hover{border-color:#fff; color:#fff; background:rgba(255,255,255,.18);}
+  .cv-toolbar .modal-close{position:static; flex-shrink:0;}
   .cv-pages{
     flex:1; min-height:0;
-    padding:48px 18px 20px;
+    padding:56px 18px 20px;
     display:flex; flex-direction:column; gap:14px;
     overflow:auto;
   }
@@ -207,8 +222,6 @@
     width:100%; height:auto; border-radius:10px;
     background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.25);
   }
-  .cv-actions{text-align:center; margin:4px 0 8px;}
-  .cv-actions a{color:var(--accent); font-weight:600;}
   html.modal-open, html.modal-open body{overflow:hidden; height:100%;}
   .modal-box{
     width:min(1080px,100%); max-height:92vh;
@@ -418,11 +431,13 @@
 
 <div class="modal cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-label="CV">
   <div class="modal-box">
-    <button class="modal-close" id="cvClose" type="button" aria-label="Kapat">×</button>
+    <div class="cv-toolbar">
+      <a class="cv-download" href="assets/CV_Dicle_Bolek.pdf" download="Dicle_Bolek_CV.pdf">İndir</a>
+      <button class="modal-close" id="cvClose" type="button" aria-label="Kapat">×</button>
+    </div>
     <div class="cv-pages">
       <img src="assets/cv_page_1.png" alt="CV sayfa 1">
       <img src="assets/cv_page_2.png" alt="CV sayfa 2">
-      <p class="cv-actions"><a href="assets/CV_Dicle_Bolek.pdf" download="Dicle_Bolek_CV.pdf">PDF olarak indir</a></p>
     </div>
   </div>
 </div>
