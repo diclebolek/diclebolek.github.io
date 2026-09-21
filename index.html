@@ -190,16 +190,19 @@
     z-index:200; padding:18px;
   }
   .modal.open{display:flex; overflow:hidden;}
-  .cv-modal .modal-box{
-    display:flex; flex-direction:column;
+  .cv-box{
     width:min(780px,100%);
     max-height:92vh;
+    display:flex; flex-direction:column;
     overflow:hidden;
-    position:relative;
+    border-radius:22px;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 1px rgba(168,85,247,.18), 0 24px 60px rgba(88,28,135,.45);
+    background:linear-gradient(180deg, rgba(88,28,135,.45), rgba(24,8,48,.92));
   }
   .cv-toolbar{
-    position:absolute; top:12px; right:12px; z-index:3;
-    display:flex; align-items:center; gap:8px;
+    display:flex; justify-content:flex-end; align-items:center; gap:8px;
+    flex-shrink:0; padding:10px 12px;
   }
   .cv-download{
     display:inline-flex; align-items:center; justify-content:center;
@@ -210,13 +213,19 @@
     color:#fff; font-size:.85rem; font-weight:600;
     text-decoration:none; white-space:nowrap;
   }
-  .cv-download:hover{border-color:#fff; color:#fff; background:rgba(255,255,255,.18);}
-  .cv-toolbar .modal-close{position:static; flex-shrink:0;}
+  .cv-download:hover{border-color:#fff; background:rgba(255,255,255,.18);}
+  .cv-close{
+    width:36px; height:36px; border-radius:50%; flex-shrink:0;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.08);
+    color:var(--ink); cursor:pointer; font-size:1.15rem; line-height:1;
+  }
+  .cv-close:hover{border-color:#fff; box-shadow:0 0 16px rgba(255,255,255,.35);}
   .cv-pages{
     flex:1; min-height:0;
-    padding:56px 18px 20px;
+    padding:0 16px 16px;
     display:flex; flex-direction:column; gap:14px;
-    overflow:auto;
+    overflow-x:hidden; overflow-y:auto;
   }
   .cv-pages img{
     width:100%; height:auto; border-radius:10px;
@@ -430,10 +439,10 @@
 </div>
 
 <div class="modal cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-label="CV">
-  <div class="modal-box">
+  <div class="cv-box">
     <div class="cv-toolbar">
       <a class="cv-download" href="assets/CV_Dicle_Bolek.pdf" download="Dicle_Bolek_CV.pdf">İndir</a>
-      <button class="modal-close" id="cvClose" type="button" aria-label="Kapat">×</button>
+      <button class="cv-close" id="cvClose" type="button" aria-label="Kapat">×</button>
     </div>
     <div class="cv-pages">
       <img src="assets/cv_page_1.png" alt="CV sayfa 1">
