@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dicle Bölek — Özgeçmiş</title>
+<meta name="description" content="Dicle Bölek özgeçmişi. Bilgisayar Mühendisi — Flutter, IoT, full-stack ve siber güvenlik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12051f;
+    --bg-2:#1c0a33;
+    --ink:#F4EEFF;
+    --muted:#B7A8D4;
+    --line:rgba(196,181,253,.22);
+    --accent:#E879F9;
+    --accent-2:#A78BFA;
+    --card:rgba(36,16,64,.72);
+    --cream:#F6F1E8;
+    --cream-ink:#2A221C;
+    --cream-muted:#6B6258;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.55;
+    min-height:100vh;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 8% -10%, rgba(168,85,247,.55), transparent 55%),
+      radial-gradient(800px 480px at 100% 8%, rgba(236,72,153,.38), transparent 50%),
+      radial-gradient(700px 500px at 50% 110%, rgba(79,70,229,.35), transparent 55%),
+      linear-gradient(160deg, #1a0630 0%, #3b0764 42%, #4c1d95 70%, #2e1065 100%);
+  }
+  a{color:inherit;}
+  .page{
+    position:relative; z-index:1;
+    max-width:1120px;
+    margin:0 auto;
+    padding:28px 22px 80px;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:48px;
+  }
+  @media(max-width:959px){
+    .page{grid-template-columns:1fr; padding:18px 16px 64px; gap:28px;}
+    .sidebar{text-align:center;}
+    .skills,.meta,.qr-box{justify-content:center;}
+  }
+
+  .sidebar{
+    position:relative;
+    align-self:start;
+    background:linear-gradient(180deg, rgba(88,28,135,.45), rgba(24,8,48,.8));
+    border:1px solid var(--line);
+    padding:26px 22px;
+    border-radius:22px;
+    backdrop-filter:blur(16px);
+    z-index:1;
+  }
+  @media(min-width:960px){
+    .sidebar{position:sticky; top:24px;}
+  }
+  .photo-wrap{
+    width:148px; height:148px;
+    border-radius:50%;
+    overflow:hidden;
+    margin:0 auto 18px;
+    border:3px solid rgba(232,121,249,.7);
+    box-shadow:0 0 0 6px rgba(167,139,250,.18), 0 12px 40px rgba(168,85,247,.35);
+    transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  }
+  .photo-wrap:hover{
+    transform:scale(1.08);
+    border-color:#fff;
+    box-shadow:0 0 0 4px #fff, 0 0 28px rgba(255,255,255,.85), 0 12px 36px rgba(168,85,247,.4);
+  }
+  .photo-wrap img{
+    width:100%; height:100%; object-fit:cover; object-position:center 12%;
+    display:block;
+  }
+  .sidebar h1{
+    font-family:'Fraunces', serif;
+    font-size:1.85rem; line-height:1.15; font-weight:600;
+    margin-bottom:6px; text-align:center;
+    background:linear-gradient(100deg,#fff 10%, #e879f9 55%, #818cf8);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .sidebar .role{color:var(--accent); font-weight:600; font-size:.95rem; margin-bottom:16px; text-align:center;}
+  .meta{font-size:.9rem; color:var(--muted); display:flex; flex-direction:column; gap:7px; margin-bottom:18px;}
+  .meta a{text-decoration:none; border-bottom:1px solid transparent;}
+  .meta a:hover{border-bottom-color:var(--accent); color:#fff;}
+  .side-label{
+    font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent-2); margin:18px 0 8px; font-weight:600;
+  }
+  .skills{display:flex; flex-wrap:wrap; gap:6px;}
+  .odak-skills{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:6px;
+  }
+  .chip{
+    font-size:.75rem; padding:4px 8px; border:1px solid var(--line);
+    background:rgba(255,255,255,.06); color:var(--ink);
+    border-radius:999px;
+  }
+  .odak-skills .chip{
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; margin:0; padding:7px 4px;
+    font-size:.7rem; line-height:1.2; min-height:34px;
+    box-sizing:border-box;
+  }
+  .qr-box{margin-top:18px; display:flex; justify-content:center;}
+  .qr-box img{width:72px; height:72px; background:#fff; border-radius:8px; padding:4px;}
+  .btn.primary{
+    display:block; width:100%; box-sizing:border-box;
+    text-decoration:none; text-align:center;
+    font-size:.95rem; font-weight:600; letter-spacing:.04em;
+    padding:13px 20px; margin-top:14px;
+    border-radius:14px; color:#fff;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:blur(22px) saturate(1.6); -webkit-backdrop-filter:blur(22px) saturate(1.6);
+    box-shadow:0 10px 28px rgba(10,4,20,.18), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(255,255,255,.08);
+    transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+  }
+  .btn.primary:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.18);
+    box-shadow:0 18px 40px rgba(10,4,20,.32), 0 8px 16px rgba(168,85,247,.22), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+
+  main h2{
+    font-family:'Fraunces', serif; font-size:1.45rem; font-weight:600;
+    border-bottom:1px solid var(--line); padding-bottom:8px; margin:8px 0 18px;
+  }
+  .lead{font-size:1.05rem; color:var(--muted); margin-bottom:28px; max-width:62ch;}
+  .job{margin-bottom:22px;}
+  .job .when{color:var(--accent-2); font-size:.82rem;}
+  .job h3{font-size:1.05rem; margin:2px 0;}
+  .job .org{color:var(--accent); font-weight:600; font-size:.9rem; margin-bottom:6px;}
+  .job ul{padding-left:18px; color:var(--muted); font-size:.93rem;}
+  .job li{margin:4px 0;}
+
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .filter{
+    background:transparent; border:1px solid var(--line); padding:6px 12px;
+    font:inherit; font-size:.8rem; cursor:pointer; color:var(--muted); border-radius:999px;
+  }
+  .filter.active,.filter:hover{border-color:transparent; color:#fff; background:linear-gradient(100deg,#c026d3,#7c3aed);}
+
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media(max-width:640px){.grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card); border:1px solid var(--line); cursor:pointer;
+    text-align:left; font:inherit; color:inherit; padding:0; overflow:hidden;
+    display:flex; flex-direction:column; min-height:100%; border-radius:16px;
+  }
+  .card:hover{border-color:rgba(232,121,249,.6); transform:translateY(-2px); transition:.2s;}
+  .card img,.card video{width:100%; height:168px; object-fit:cover; object-position:center top; display:block;}
+  .card video{pointer-events:none;}
+  .card-body{padding:12px 14px 14px;}
+  .card h3{font-size:1rem; font-family:'Fraunces',serif; margin-bottom:6px;}
+  .card p{font-size:.84rem; color:var(--muted); display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
+  .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;}
+  .tag{font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:#ddd6fe; border:1px solid var(--line); padding:3px 8px; border-radius:999px;}
+  .open-hint{font-size:.75rem; margin-top:8px; color:var(--accent); font-weight:600;}
+  .card.is-hidden{display:none;}
+
+  .certs{display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; font-size:.9rem;}
+  @media(max-width:640px){.certs{grid-template-columns:1fr;}}
+  .certs li{list-style:none; padding-left:12px; position:relative; color:var(--muted);}
+  .certs li::before{content:""; width:5px; height:5px; background:var(--accent); position:absolute; left:0; top:.55em; border-radius:50%;}
+
+  footer{grid-column:1/-1; text-align:center; color:var(--muted); font-size:.8rem; padding-top:24px; border-top:1px solid var(--line);}
+
+  .modal{
+    position:fixed; inset:0;
+    background:rgba(10,4,20,.78);
+    backdrop-filter:blur(10px);
+    display:none; align-items:center; justify-content:center;
+    z-index:200; padding:18px;
+  }
+  .modal.open{display:flex;}
+  .modal-box{
+    width:min(1080px,100%); max-height:92vh;
+    overflow:auto;
+    display:grid; grid-template-columns:1.15fr .95fr;
+    border-radius:22px;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 1px rgba(168,85,247,.18), 0 24px 60px rgba(88,28,135,.45);
+    background:linear-gradient(180deg, rgba(88,28,135,.45), rgba(24,8,48,.92));
+  }
+  @media(max-width:800px){
+    .modal-box{grid-template-columns:1fr;}
+    .modal-info{order:1;}
+    .gallery{order:2; max-height:none;}
+  }
+  .gallery{
+    background:linear-gradient(180deg, rgba(76,29,149,.35), rgba(18,5,31,.55));
+    padding:22px 22px 16px;
+    display:flex; flex-direction:column; gap:14px;
+    min-height:280px;
+    max-height:92vh;
+    overflow:auto;
+  }
+  .gallery-main{
+    position:relative; flex:1; display:flex; align-items:center; justify-content:center;
+    background:rgba(18,5,31,.55);
+    border:1px solid var(--line);
+    border-radius:16px; overflow:hidden; min-height:320px;
+  }
+  .gallery-main img,.gallery-main video{
+    max-width:100%; max-height:min(58vh, 520px); object-fit:contain; background:rgba(12,4,24,.4);
+  }
+  .gallery-main video{width:auto; height:auto; max-width:min(100%, 280px); display:none;}
+  .nav-btn{
+    position:absolute; top:50%; transform:translateY(-50%);
+    z-index:2;
+    width:40px; height:40px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.28);
+    background:linear-gradient(100deg,#c026d3,#7c3aed);
+    cursor:pointer; font-size:1.2rem; color:#fff;
+  }
+  .nav-btn:hover{filter:brightness(1.08);}
+  .nav-btn.prev{left:12px;} .nav-btn.next{right:12px;}
+  .thumbs{display:flex; gap:8px; overflow-x:auto;}
+  .thumbs img,.thumbs video{
+    height:58px; width:78px; object-fit:cover; border-radius:8px; cursor:pointer;
+    opacity:.5; border:2px solid transparent;
+  }
+  .thumbs img.on,.thumbs video.on{opacity:1; border-color:var(--accent); box-shadow:0 0 12px rgba(232,121,249,.45);}
+  .modal-info{
+    background:transparent;
+    color:var(--ink);
+    padding:32px 28px 28px; position:relative; overflow:auto;
+  }
+  .modal-close{
+    position:absolute; right:16px; top:14px;
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.08);
+    cursor:pointer; font-size:1.1rem; color:var(--ink);
+  }
+  .modal-close:hover{border-color:#fff; box-shadow:0 0 16px rgba(255,255,255,.35);}
+  .eyebrow{
+    font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent-2); font-weight:600; margin-bottom:10px;
+  }
+  .modal-info h3{
+    font-family:'Fraunces',serif; font-size:2rem; font-weight:600; line-height:1.15; margin-bottom:6px;
+    background:linear-gradient(100deg,#fff 10%, #e879f9 55%, #818cf8);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .subtitle{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--accent); font-size:1.05rem; margin-bottom:16px;
+  }
+  .modal-info p{color:var(--muted); margin-bottom:18px;}
+  .modal-info hr{border:0; border-top:1px solid var(--line); margin:4px 0 16px;}
+  .highlights{list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:18px;}
+  .highlights li{padding-left:22px; position:relative; color:var(--ink); font-size:.95rem;}
+  .highlights li::before{content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:700;}
+  .lang-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
+  .lang-chip{
+    font-size:.78rem; padding:6px 12px; border-radius:999px;
+    background:rgba(255,255,255,.06); color:#ddd6fe; border:1px solid var(--line);
+    letter-spacing:.04em; text-transform:uppercase;
+  }
+  .modal-info a{color:var(--accent); font-weight:600;}
+  .modal-info a:hover{color:#fff;}
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="photo-wrap">
+      <img src="assets/projects/profil_foto.jpeg" alt="Dicle Bölek">
+    </div>
+    <h1>Dicle Bölek</h1>
+    <div class="role">Bilgisayar Mühendisi</div>
+    <div class="meta">
+      <span>İstanbul, Türkiye</span>
+      <a href="mailto:diclebolekk@gmail.com">diclebolekk@gmail.com</a>
+      <a href="tel:+905060642278">0506 064 22 78</a>
+      <a href="https://github.com/diclebolek" target="_blank" rel="noopener">github.com/diclebolek</a>
+      <a href="https://www.linkedin.com/in/dicle-bolekk/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <a class="btn primary" href="assets/CV_Dicle_Bolek.pdf">CV (PDF)</a>
+
+    <div class="side-label">Eğitim</div>
+    <div style="font-size:.9rem;">
+      <strong>Sakarya Üniversitesi</strong><br>
+      Bilgisayar Mühendisliği
+    </div>
+
+    <div class="side-label">Odak</div>
+    <div class="odak-skills">
+      <span class="chip">Mobil uygulama</span>
+      <span class="chip">Flutter</span>
+      <span class="chip">C#</span>
+      <span class="chip">ASP.NET</span>
+      <span class="chip">Python</span>
+      <span class="chip">SQL</span>
+      <span class="chip">IoT</span>
+      <span class="chip">Firebase</span>
+      <span class="chip">PostgreSQL</span>
+      <span class="chip">Real-time</span>
+      <span class="chip">Supabase</span>
+      <span class="chip">Sürdürülebilirlik</span>
+    </div>
+
+    <div class="side-label">Diller</div>
+    <div class="skills"><span class="chip">Türkçe — ana dil</span><span class="chip">İngilizce — B1</span></div>
+
+    <div class="qr-box">
+      <img src="assets/qr-portfolio.png" alt="Portföy QR kodu">
+    </div>
+  </aside>
+
+  <main>
+    <h2>Özet</h2>
+    <p class="lead">Flutter, C# / ASP.NET, Python ve IoT ile gerçek zamanlı sistemler geliştiriyorum; projelerde SQL tabanlı backend (PostgreSQL, SQLite) kullanıyorum. Çevreci ve sürdürülebilir yazılımlara özellikle ilgi duyuyorum. TÜBİTAK 2209-B projesini yürütüyorum. Invento’da siber güvenlik stajımı tamamladım.</p>
+
+    <h2>Deneyim</h2>
+    <article class="job">
+      <div class="when">13 Temmuz — 20 Ağustos 2026</div>
+      <h3>Siber Güvenlik Stajyeri (BT &amp; Pentest)</h3>
+      <div class="org">Invento · İstanbul</div>
+      <ul>
+        <li>Kali Linux ortamında sızma testi metodolojileri üzerine uygulamalı çalışma.</li>
+        <li>Nessus, Nmap ve Wireshark ile zafiyet, tarama ve trafik analizi.</li>
+        <li>Staj kapsamında kurumsal web arayüzü tasarımı (ayrı proje kartında).</li>
+      </ul>
+    </article>
+    <article class="job">
+      <div class="when">Ağustos — Eylül 2025</div>
+      <h3>Yazılım Geliştirici Stajyeri</h3>
+      <div class="org">GNP Mekatronik</div>
+      <ul>
+        <li>Flutter ve Supabase ile randevu uygulaması geliştirdi (GNP App).</li>
+        <li>Giriş, kayıt, hizmetler, randevu ve yönetici paneli.</li>
+        </ul>
+    </article>
+
+    <h2>Projeler</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin:-8px 0 14px;">Karta tıklayınca görseller ve kullanılan diller açılır.</p>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+
+    <h2 style="margin-top:36px;">Sertifikalar</h2>
+    <ul class="certs">
+      <li>Programming for Everybody — University of Michigan</li>
+      <li>SOC Fundamentals — CyberExam</li>
+      <li>Siber Güvenlik Bootcamp — Huawei</li>
+      <li>Cybersecurity Fundamentals — IBM</li>
+      <li>Introduction to Cybersecurity — Cisco</li>
+      <li>AI Fundamentals — IBM</li>
+      <li>Python ile Proje Geliştirme — Udemy</li>
+      <li>Linux 101 &amp; 201 — Turkcell</li>
+    </ul>
+  </main>
+
+  <footer>© 2026 Dicle Bölek · diclebolek.github.io</footer>
+  </div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="gallery">
+      <div class="gallery-main">
+        <button class="nav-btn prev" type="button" aria-label="Önceki">‹</button>
+        <img id="modalImg" alt="">
+        <video id="modalVideo" controls playsinline loop muted></video>
+        <button class="nav-btn next" type="button" aria-label="Sonraki">›</button>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+    <div class="modal-info">
+      <button class="modal-close" type="button" aria-label="Kapat">×</button>
+      <div class="eyebrow" id="modalEyebrow"></div>
+      <h3 id="modalTitle"></h3>
+      <div class="subtitle" id="modalSub"></div>
+      <p id="modalText"></p>
+      <hr>
+      <ul class="highlights" id="modalHighlights"></ul>
+      <div class="lang-row" id="modalLangs"></div>
+      <p style="margin-top:16px;"><a id="modalLink" target="_blank" rel="noopener"></a></p>
+    </div>
+  </div>
+  </div>
+
+<script>
+const PROJECTS = [
+  {
+    id:'karbon', num:'01', eyebrow:'Gömülü sistemler',
+    title:'Karbon Ayak İzi',
+    subtitle:'Gerçek zamanlı su, gaz ve elektrik takibi',
+    cats:['iot','web','mobil','ocr','akademik'],
+    langs:['Dart','Flutter','Assembly','OCR','Real-time'],
+    cover:'assets/projects/karbon_ayak_izi.png',
+    images:[
+      'assets/projects/karbon_ayak_izi.png',
+      'assets/projects/karbon_ayak_izi_1_.jpeg',
+      'assets/projects/karbon_ayak_izi_2_.jpeg',
+      'assets/projects/karbon_ayak_izi_1_.png'
+    ],
+    text:'TÜBİTAK 2209-B destekli IoT sistemi: su, doğalgaz ve elektrik tüketimini sensörlerle anlık toplar, Flutter mobil ve web arayüzünde gösterir. Fatura OCR, IPCC emisyon hesabı ve ISO 14064 uyumlu PDF raporlama var. Gömülü tarafta Assembly kullanıldı. Proje üzerine makale yazıldı; henüz yayımlanmadı.',
+    highlights:['TÜBİTAK 2209-B','Real-time sensör ve arayüz senkronu','Makale yazıldı, yayım bekleniyor'],
+    link:'https://github.com/diclebolek/Yenilenen', linkLabel:'GitHub'
+  },
+  {
+    id:'mira', num:'05', eyebrow:'Mobil uygulama',
+    title:'Mira Mobil App',
+    subtitle:'Kuaför ve güzellik randevu uygulaması',
+    cats:['mobil'],
+    langs:['Dart','Flutter'],
+    cover:'assets/projects/kuafor_mobil_app_5_.png',
+    coverPos:'center 42%',
+    images:[
+      'assets/projects/kuafor_mobil_app_5_.png',
+      'assets/projects/kuafor_mobil_app_1_.png',
+      'assets/projects/kuafor_mobil_app_2_.png',
+      'assets/projects/kuafor_mobil_app_3_.png',
+      'assets/projects/kuafor_mobil_app_4_.png'
+    ],
+    text:'Türkiye genelinde salon keşfi yapan çift taraflı Flutter uygulaması. Müşteri tarafında kategori, cinsiyet, puan, fiyat ve mesafe filtreleri; randevu, mesaj ve yorum var. Salon sahibi hizmet, kampanya ve profil yönetir. Instagram benzeri çoklu fotoğraflı gönderiler şu an cihazda yerel saklanır.',
+    highlights:['Müşteri ve salon sahibi panelleri','Arama, filtre ve konum','Sosyal profil ve gönderi galerisi']
+  },
+  {
+    id:'focusflow', num:'04', eyebrow:'Mobil uygulama',
+    title:'FocusFlow',
+    subtitle:'Odaklanma takibi ve raporlama',
+    cats:['mobil'],
+    langs:['JavaScript','React Native','Expo','SQLite'],
+    cover:'assets/projects/focusflow_intro.mp4',
+    images:[
+      'assets/projects/focusflow_intro.mp4',
+      'assets/projects/focusflow_04.png',
+      'assets/projects/focusflow_02.png',
+      'assets/projects/focusflow_03.png',
+      'assets/projects/focusflow_05.png',
+      'assets/projects/focusflow_06.png',
+      'assets/projects/focusflow_07.png'
+    ],
+    text:'React Native (Expo) ile dijital dikkat dağınıklığına karşı odaklanma uygulaması. Giriş ekranı animasyonlu; zamanlayıcıda Pomodoro seansı, kategori (kodlama, proje, kitap) ve açık/koyu tema var. AppState ile uygulamadan çıkışlar dikkat dağınıklığı olarak sayılır. Raporlarda günlük/toplam süre, 7 günlük çubuk grafik ve kategori pasta grafiği; notlar, teknikler ve ayarlar sekmeleri de bulunur. Veri SQLite ve AsyncStorage’da tutulur.',
+    highlights:['Animasyonlu giriş ve açık/koyu tema','Pomodoro + dikkat dağınıklığı takibi','Grafikli raporlar, notlar, teknikler'],
+    link:'https://github.com/diclebolek/Mobil_Proje_G211210055_v11', linkLabel:'GitHub'
+  },
+  {
+    id:'gnp', num:'06', eyebrow:'Staj · GNP Mekatronik',
+    title:'GNP App',
+    subtitle:'Spor salonu randevu ve yönetim uygulaması',
+    cats:['mobil','web','staj'],
+    langs:['Dart','Flutter','Supabase'],
+    cover:'assets/projects/gnp_01.png',
+    images:[
+      'assets/projects/gnp_01.png',
+      'assets/projects/gnp_02.png',
+      'assets/projects/gnp_03.png',
+      'assets/projects/gnp_04.png',
+      'assets/projects/gnp_05.png',
+      'assets/projects/gnp_06.png',
+      'assets/projects/gnp_07.png',
+      'assets/projects/gnp_08.png',
+      'assets/projects/gnp_09.png',
+      'assets/projects/gnp_10.png',
+      'assets/projects/gnp_11.png',
+      'assets/projects/gnp_12.png'
+    ],
+    text:'GNP Mekatronik stajında yazdığım Flutter + Supabase uygulaması (örnek işletme: Orion Gym & Fitness). Müşteri tarafında spor salonu ana sayfası, etkinlikler ve hizmet/fiyat listesi var. Yönetici panelinde çalışan yönetimi, performans analizi, randevu onay/iptal akışı, aktivite kaydı ve profil ayarları bulunur. Açık ve koyu tema desteklenir; web tanıtım sayfaları da aynı marka altında.',
+    highlights:['Müşteri: hizmetler, randevu, etkinlik','Yönetici: çalışan, performans, onay','Flutter, Supabase, açık/koyu tema'],
+    link:'https://github.com/diclebolek/GNP', linkLabel:'GitHub'
+  },
+  {
+    id:'invento', num:'07', eyebrow:'Staj · Invento',
+    title:'Invento Web Sitesi',
+    subtitle:'Kurumsal siber güvenlik sitesi',
+    cats:['web','staj'],
+    langs:['HTML','CSS','JavaScript'],
+    cover:'assets/projects/invento_staj_web_site_1_.png',
+    images:[
+      'assets/projects/invento_staj_web_site_1_.png',
+      'assets/projects/invento_staj_web_site_2_.png',
+      'assets/projects/invento_staj_web_site_3_.png',
+      'assets/projects/invento_staj_web_site_4_.png'
+    ],
+    text:'Invento stajında hazırladığım kurumsal siber güvenlik web sitesi. Çözüm ve hizmet kataloğu, EN/TR dil seçimi, koyu tema. SOC ve topoloji ekranları tanıtım demosudur; canlı müşteri oturumu değildir.',
+    highlights:['Kurumsal web sitesi','EN / TR dil desteği','Demo telemetri, canlı veri yok']
+  },
+  {
+    id:'codesentinel', num:'08', eyebrow:'AppSec · Açık kaynak',
+    title:'CodeSentinel',
+    subtitle:'SAST, gizli anahtar ve CVE tarama aracı',
+    cats:['web'],
+    langs:['Python','HTML','JavaScript','Docker'],
+    cover:'assets/projects/codesentinel_dashboard.png',
+    images:[
+      'assets/projects/codesentinel_dashboard.png',
+      'assets/projects/codesentinel_demo_report.png',
+      'assets/projects/codesentinel_juice.png',
+      'assets/projects/codesentinel_landing.png'
+    ],
+    text:'Python ve JavaScript/TypeScript projeleri için statik kod analizi (SAST), gizli anahtar tespiti ve bağımlılık CVE taraması yapan açık kaynak AppSec aracı. Web panosundan tarama başlatılır; HTML, JSON, PDF ve SARIF rapor üretir. Demo taraması ve OWASP Juice Shop vaka çalışması GitHub Pages’te yayında.',
+    highlights:['SAST, secrets ve CVE taraması','Web dashboard + HTML rapor','OWASP Juice Shop vaka çalışması'],
+    link:'https://github.com/diclebolek/CodeSentinelReport', linkLabel:'GitHub'
+  },
+  {
+    id:'ocr', num:'03', eyebrow:'Sağlık yazılımı',
+    title:'E-Laboratuvar',
+    subtitle:'OCR destekli tetkik analizi',
+    cats:['ocr','web','mobil','akademik'],
+    langs:['Dart','Flutter','SQLite','Firebase'],
+    cover:'assets/projects/ocr_giris_sayfas.png',
+    images:[
+      'assets/projects/ocr_giris_sayfas.png',
+      'assets/projects/ocr_1_.png',
+      'assets/projects/ocr_2_.png',
+      'assets/projects/ocr_4_.png'
+    ],
+    text:'Pediatrik ve genel laboratuvar tahlillerini dijital yönetmek için Flutter uygulaması. Doktor paneli kamera/galeri ile raporu tarar; Google ML Kit OCR + özel parser IgA, IgM, IgG satırlarını ayırır. Hasta geçmiş tahlillerini ve değişimi görür. APK’da asıl veri kaynağı SQLite; ayrıca Firebase kullanıldı. PDF rapor üretir. YÖKSİS’te bildiri olarak yayımlandı.',
+    highlights:['Doktor ve hasta panelleri','OCR ile otomatik tahlil okuma','SQLite + Firebase, PDF rapor'],
+    link:'https://github.com/diclebolek/E_Lab4', linkLabel:'GitHub'
+  },
+  {
+    id:'sirius', num:'09', eyebrow:'Full-stack web',
+    title:'Sirius',
+    subtitle:'ASP.NET Core kuaför sistemi',
+    cats:['web'],
+    langs:['C#','ASP.NET','Python'],
+    cover:'assets/projects/asp_.netcore_kuafor_1_.png',
+    images:[
+      'assets/projects/asp_.netcore_kuafor_1_.png',
+      'assets/projects/asp_.netcore_kuafor_2_.png',
+      'assets/projects/indir_1_.png',
+      'assets/projects/asp_.netcore_kuafor_3_.png'
+    ],
+    text:'ASP.NET Core MVC (C#) ile kuaför ve berber işletme yönetimi. Salon işlemleri, süre/ücret, çalışan uzmanlık ve müsaitlik tanımlanır; müşteri uygun çalışandan randevu alır, çakışmada uyarı ve onay mekanizması vardır. En az bir katmanda REST API ve LINQ kullanılır. Kullanıcı fotoğraf yükleyerek Python tabanlı yapay zekâdan saç modeli veya renk önerisi alır. Entity Framework Core ve PostgreSQL.',
+    highlights:['Salon, çalışan ve randevu yönetimi','REST API + admin / üye rolleri','Python ile saç ve renk önerisi'],
+    link:'https://github.com/diclebolek/CoiffeurWEB', linkLabel:'GitHub'
+  },
+  {
+    id:'arac', num:'10', eyebrow:'Nesne yönelimli analiz',
+    title:'Araç Kiralama',
+    subtitle:'C# masaüstü yönetim sistemi',
+    cats:['masaüstü'],
+    langs:['C#','WinForms','PostgreSQL'],
+    cover:'assets/projects/arac_kiralama_1_.png',
+    images:[
+      'assets/projects/arac_kiralama_1_.png',
+      'assets/projects/arac_kiralama_2_.png',
+      'assets/projects/arac_kiralama_4_.png',
+      'assets/projects/arac_kiralama_5_.png',
+      'assets/projects/arac_kiralama_3_.png'
+    ],
+    text:'BSM 211 veritabanı projesi: araç kiralama. C# Windows Forms arayüzünde arama, ekleme, silme ve güncelleme var. Veritabanı PostgreSQL; en az 15 tablo, kalıtım içeren ER diyagramı, saklı yordam ve tetikleyiciler yazılım içinden çağrılır. Müşteri, araç, rezervasyon, ödeme ve filo ilişkileri modellendi.',
+    highlights:['PostgreSQL zorunlu veri katmanı','CRUD arayüzü + ER / kalıtım','Saklı yordam ve tetikleyiciler'],
+    link:'https://github.com/diclebolek/NesneY-nelimliAnaliz', linkLabel:'GitHub'
+  },
+  {
+    id:'ilac', num:'02', eyebrow:'Gömülü sistem',
+    title:'Akıllı İlaç Kutusu',
+    subtitle:'IoT ilaç takip prototipi',
+    cats:['iot'],
+    langs:['Arduino IDE','Assembly','MIT App Inventor','Firebase'],
+    cover:'assets/projects/akll_ilac_kutusu_2_.jpeg',
+    coverPos:'center 62%',
+    images:[
+      'assets/projects/akll_ilac_kutusu_2_.jpeg',
+      'assets/projects/akll_ilac_kutusu_3_.jpeg',
+      'assets/projects/asp_.netcore_kuafor_1_.jpeg'
+    ],
+    text:'İlaç saatini kaçırmamak için tasarlanmış IoT prototipi. Arduino IDE ve Assembly ile gömülü kontrol, MIT App Inventor ile mobil arayüz, Firebase ile anlık veri. Kutu alarm verir ve alım kaydını iletir.',
+    highlights:['Arduino IDE + Assembly','MIT App Inventor mobil arayüz','Firebase ile anlık kayıt'],
+    link:'https://github.com/diclebolek/-la-Kutusu', linkLabel:'GitHub'
+  },
+  {
+    id:'lda', num:'11', eyebrow:'Veri analizi',
+    title:'LDA Konu Modelleme',
+    subtitle:'Twitter metin madenciliği',
+    cats:['veri'],
+    langs:['Python','RapidMiner'],
+    cover:'assets/projects/lda_rapid_miner3.png',
+    images:[
+      'assets/projects/lda_rapid_miner.jpg',
+      'assets/projects/lda_rapid_miner2.png',
+      'assets/projects/lda_rapid_miner3.png'
+    ],
+    text:'RapidMiner ortamında LDA (Latent Dirichlet Allocation) ile Twitter metinlerinden gizli konular çıkarılır. CSV okuma, nitelik seçimi, metin ön işleme ve konu dağılımı adımları pipeline olarak kuruldu; her konu için anahtar kelimeler üretilir.',
+    highlights:['LDA konu modelleme','RapidMiner veri hattı','Sosyal medya trend analizi'],
+    link:'https://github.com/diclebolek/LDA_data_analysis', linkLabel:'GitHub'
+  },
+  {
+    id:'insucom', num:'12', eyebrow:'Takım · Full-stack',
+    title:'Insucom — Sigorta Yönetimi',
+    subtitle:'Sigorta web uygulaması',
+    cats:['web'],
+    langs:['Python','Django Web API','Docker','DevOps','Selenium','Postman'],
+    cover:'assets/projects/sigorta_insucom_(2).png',
+    images:[
+      'assets/projects/sigorta_insucom_(2).png',
+      'assets/projects/sigorta_insucom_(3).png',
+      'assets/projects/sigorta_insucom_(4).png',
+      'assets/projects/sigorta_insucom_(1).png'
+    ],
+    text:'Insucom sigorta yönetim sistemi. Dört kişilik ekipte Django REST API backend’ini yazdım; Azure DevOps ile CI/CD, Docker konteynerleri, Azure Blob Storage ve Selenium E2E test kullanıldı. Web arayüzü poliçe ve içerik sayfalarını gösterir.',
+    highlights:['Tek proje: arayüz + mikroservis','Python / Django REST','Docker, Azure DevOps, Selenium'],
+    link:'https://github.com/diclebolek/devopsProjeSon', linkLabel:'GitHub'
+  }
+];
+
+const PROJECT_ORDER = [
+  'karbon','ilac','ocr','focusflow',
+  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom'
+];
+PROJECTS.sort((a,b)=>PROJECT_ORDER.indexOf(a.id)-PROJECT_ORDER.indexOf(b.id));
+
+const FILTERS = [
+  ['all','Tümü'],['mobil','Mobil'],['web','Web'],['iot','IoT'],
+  ['ocr','OCR'],['akademik','Akademik'],['staj','Staj'],['masaüstü','Masaüstü'],['veri','Veri']
+];
+
+const grid = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+let currentFilter = 'all';
+let active = null;
+let imgIndex = 0;
+
+FILTERS.forEach(([id,label],i)=>{
+  const b = document.createElement('button');
+  b.className = 'filter' + (i===0?' active':'');
+  b.type='button';
+  b.textContent=label;
+  b.onclick=()=>{
+    currentFilter=id;
+    document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    render();
+  };
+  filtersEl.appendChild(b);
+});
+
+function isVideo(src){
+  return /\.(mp4|webm|ogg)(\?|$)/i.test(src||'');
+}
+function coverMarkup(p){
+  if(!p.cover) return '<div style="height:168px;display:flex;align-items:center;justify-content:center;color:#B7A8D4;font-size:.85rem;">Görsel yok</div>';
+  const pos = p.coverPos || 'center top';
+  if(isVideo(p.cover)) return `<video src="${p.cover}" muted loop autoplay playsinline style="object-position:${pos}"></video>`;
+  return `<img src="${p.cover}" alt="" style="object-position:${pos}">`;
+}
+function render(){
+  grid.innerHTML='';
+  PROJECTS.forEach(p=>{
+    if(currentFilter!=='all' && !p.cats.includes(currentFilter)) return;
+    const btn=document.createElement('button');
+    btn.className='card';
+    btn.type='button';
+    btn.innerHTML =
+      coverMarkup(p) +
+      `<div class="card-body">
+        <h3>${p.title}</h3>
+        <p>${p.text}</p>
+        <div class="tags">${(p.langs||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="open-hint">Görselleri aç →</div>
+      </div>`;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openModal(p);
+    });
+    grid.appendChild(btn);
+  });
+}
+
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modalImg');
+const modalVideo=document.getElementById('modalVideo');
+const thumbs=document.getElementById('thumbs');
+
+function stopModalVideo(){
+  modalVideo.pause();
+  modalVideo.removeAttribute('src');
+  modalVideo.load();
+}
+function closeModal(){
+  stopModalVideo();
+  modal.classList.remove('open');
+}
+function openModal(p){
+  active=p;
+  imgIndex=0;
+  document.getElementById('modalEyebrow').textContent = (p.num||'') + ' / ' + (p.eyebrow||'');
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalSub').textContent=p.subtitle||'';
+  document.getElementById('modalText').textContent=p.text;
+  document.getElementById('modalHighlights').innerHTML=(p.highlights||[]).map(h=>`<li>${h}</li>`).join('');
+  document.getElementById('modalLangs').innerHTML=(p.langs||[]).map(t=>`<span class="lang-chip">${t}</span>`).join('');
+  const a=document.getElementById('modalLink');
+  if(p.link){a.href=p.link;a.textContent=p.linkLabel||p.link;a.style.display='inline';}
+  else {a.style.display='none';}
+  drawGallery();
+  modal.classList.add('open');
+}
+function drawGallery(){
+  const imgs=active.images.length?active.images:(active.cover?[active.cover]:[]);
+  document.querySelector('.nav-btn.prev').style.display = imgs.length>1?'':'none';
+  document.querySelector('.nav-btn.next').style.display = imgs.length>1?'':'none';
+  if(!imgs.length){
+    modalImg.removeAttribute('src');
+    modalImg.style.display='none';
+    stopModalVideo();
+    modalVideo.style.display='none';
+    thumbs.innerHTML='';
+    return;
+  }
+  const src=imgs[imgIndex];
+  if(isVideo(src)){
+    modalImg.style.display='none';
+    modalImg.removeAttribute('src');
+    modalVideo.style.display='block';
+    if(modalVideo.getAttribute('src')!==src){
+      modalVideo.src=src;
+    }
+    modalVideo.play().catch(()=>{});
+  } else {
+    stopModalVideo();
+    modalVideo.style.display='none';
+    modalImg.style.display='block';
+    modalImg.src=src;
+  }
+  thumbs.innerHTML='';
+  imgs.forEach((item,i)=>{
+    const t=isVideo(item)?document.createElement('video'):document.createElement('img');
+    t.src=item;
+    if(isVideo(item)){t.muted=true; t.playsInline=true;}
+    t.className=i===imgIndex?'on':'';
+    t.onclick=()=>{imgIndex=i;drawGallery();};
+    thumbs.appendChild(t);
+  });
+}
+function step(d){
+  if(!active||!active.images.length)return;
+  imgIndex=(imgIndex+d+active.images.length)%active.images.length;
+  drawGallery();
+}
+document.querySelector('.nav-btn.prev').onclick=()=>step(-1);
+document.querySelector('.nav-btn.next').onclick=()=>step(1);
+document.querySelector('.modal-close').onclick=closeModal;
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{
+  if(!modal.classList.contains('open'))return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='ArrowLeft')step(-1);
+  if(e.key==='ArrowRight')step(1);
+});
+render();
+</script>
+</body>
+</html>
