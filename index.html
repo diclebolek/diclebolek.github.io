@@ -190,6 +190,23 @@
     z-index:200; padding:18px;
   }
   .modal.open{display:flex;}
+  .cv-modal .modal-box{
+    grid-template-columns:1fr;
+    width:min(780px,100%);
+    position:relative;
+  }
+  .cv-pages{
+    padding:48px 18px 20px;
+    display:flex; flex-direction:column; gap:14px;
+    max-height:92vh; overflow:auto;
+  }
+  .cv-pages img{
+    width:100%; height:auto; border-radius:10px;
+    background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+  .cv-actions{text-align:center; margin:4px 0 8px;}
+  .cv-actions a{color:var(--accent); font-weight:600;}
+  .btn.primary{cursor:pointer;}
   .modal-box{
     width:min(1080px,100%); max-height:92vh;
     overflow:auto;
@@ -293,7 +310,7 @@
       <a href="https://github.com/diclebolek" target="_blank" rel="noopener">github.com/diclebolek</a>
       <a href="https://www.linkedin.com/in/dicle-bolekk/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <a class="btn primary" href="assets/CV_Dicle_Bolek.pdf">CV (PDF)</a>
+    <a class="btn primary" href="assets/CV_Dicle_Bolek.pdf" id="cvBtn">CV (PDF)</a>
 
     <div class="side-label">Eğitim</div>
     <div style="font-size:.9rem;">
@@ -327,7 +344,7 @@
 
   <main>
     <h2>Özet</h2>
-    <p class="lead">Flutter, C# / ASP.NET, Python ve IoT ile gerçek zamanlı sistemler geliştiriyorum; projelerde SQL tabanlı backend (PostgreSQL, SQLite) kullanıyorum. Çevreci ve sürdürülebilir yazılımlara özellikle ilgi duyuyorum. TÜBİTAK 2209-B projesini yürütüyorum. Invento’da siber güvenlik stajımı tamamladım.</p>
+    <p class="lead">Flutter, C# / ASP.NET, Python ve IoT ile gerçek zamanlı sistemler geliştiriyorum; projelerde SQL tabanlı backend (PostgreSQL, SQLite) kullanıyorum. Çevreci ve sürdürülebilir yazılımlara özellikle ilgi duyuyorum. TÜBİTAK 2209-B projesini yürütüyorum.</p>
 
     <h2>Deneyim</h2>
     <article class="job">
@@ -394,7 +411,18 @@
       <p style="margin-top:16px;"><a id="modalLink" target="_blank" rel="noopener"></a></p>
     </div>
   </div>
+</div>
+
+<div class="modal cv-modal" id="cvModal" role="dialog" aria-modal="true" aria-label="CV">
+  <div class="modal-box">
+    <button class="modal-close" id="cvClose" type="button" aria-label="Kapat">×</button>
+    <div class="cv-pages">
+      <img src="assets/cv_page_1.png" alt="CV sayfa 1">
+      <img src="assets/cv_page_2.png" alt="CV sayfa 2">
+      <p class="cv-actions"><a href="assets/CV_Dicle_Bolek.pdf" download="Dicle_Bolek_CV.pdf">PDF olarak indir</a></p>
+    </div>
   </div>
+</div>
 
 <script>
 const PROJECTS = [
@@ -752,9 +780,22 @@ function step(d){
 }
 document.querySelector('.nav-btn.prev').onclick=()=>step(-1);
 document.querySelector('.nav-btn.next').onclick=()=>step(1);
-document.querySelector('.modal-close').onclick=closeModal;
+document.querySelector('#modal .modal-close').onclick=closeModal;
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+const cvModal=document.getElementById('cvModal');
+function openCv(e){
+  e.preventDefault();
+  cvModal.classList.add('open');
+}
+function closeCv(){cvModal.classList.remove('open');}
+document.getElementById('cvBtn').addEventListener('click',openCv);
+document.getElementById('cvClose').onclick=closeCv;
+cvModal.addEventListener('click',e=>{if(e.target===cvModal)closeCv();});
 document.addEventListener('keydown',e=>{
+  if(cvModal.classList.contains('open')){
+    if(e.key==='Escape')closeCv();
+    return;
+  }
   if(!modal.classList.contains('open'))return;
   if(e.key==='Escape')closeModal();
   if(e.key==='ArrowLeft')step(-1);
