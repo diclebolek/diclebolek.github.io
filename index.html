@@ -676,12 +676,28 @@ const PROJECTS = [
     text:'Insucom sigorta yönetim sistemi. Dört kişilik ekipte Django REST API backend’ini yazdım; Azure DevOps ile CI/CD, Docker konteynerleri, Azure Blob Storage ve Selenium E2E test kullanıldı. Web arayüzü poliçe ve içerik sayfalarını gösterir.',
     highlights:['Tek proje: arayüz + mikroservis','Python / Django REST','Docker, Azure DevOps, Selenium'],
     link:'https://github.com/diclebolek/devopsProjeSon', linkLabel:'GitHub'
+  },
+  {
+    id:'rustjourney', num:'13', eyebrow:'Web · Atölye',
+    title:'Rust Journey',
+    subtitle:'Türkçe Rust atölye notları',
+    cats:['web'],
+    langs:['Rust','React','TypeScript'],
+    cover:'assets/projects/rust_journey_01.png',
+    coverPos:'center top',
+    images:[
+      'assets/projects/rust_journey_01.png',
+      'assets/projects/rust_journey_02.png'
+    ],
+    text:'Rust’u Türkçe, adım adım öğreten interaktif atölye sitesi. Yol haritası 28 duraktan oluşuyor; her derste kısa açıklama, çalışan kod örneği ve mini alıştırma var. İlerleme, arama ve “kaldığın yerden devam et” ile takip edilir.',
+    highlights:['28 derslik yol haritası','Kod örneği + alıştırma','İlerleme ve arama'],
+    link:'https://diclebolek.github.io/rust_my_site/', linkLabel:'Canlı site'
   }
 ];
 
 const PROJECT_ORDER = [
   'karbon','ilac','ocr','focusflow',
-  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom'
+  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom','rustjourney'
 ];
 PROJECTS.sort((a,b)=>PROJECT_ORDER.indexOf(a.id)-PROJECT_ORDER.indexOf(b.id));
 
