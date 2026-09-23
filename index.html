@@ -171,18 +171,26 @@
   .card h3{font-size:1rem; font-family:'Fraunces',serif; margin-bottom:6px;}
   .card p{font-size:.84rem; color:var(--muted); display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
   .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;}
-  .tag{font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:#ddd6fe; border:1px solid var(--line); padding:3px 8px; border-radius:999px;}
+  .tag{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:.72rem; letter-spacing:.02em; color:#e9e4ff;
+    border:1px solid var(--line); padding:4px 10px; border-radius:999px;
+    background:rgba(255,255,255,.05);
+  }
+  .tag-dot{
+    width:10px; height:10px; border-radius:50%; flex-shrink:0;
+    box-shadow:0 0 0 1px rgba(255,255,255,.15);
+  }
   .all-langs{
     margin-top:28px; padding:18px 16px;
     border:1px solid var(--line); border-radius:16px;
     background:rgba(255,255,255,.04);
   }
   .all-langs .side-label{margin:0 0 12px;}
-  .all-langs .tags{margin-top:0; gap:8px;}
+  .all-langs .tags{margin-top:0; gap:10px 14px;}
   .all-langs .tag{
-    font-size:.78rem; padding:6px 12px;
-    background:rgba(255,255,255,.06); color:var(--ink);
-    text-transform:none; letter-spacing:.02em;
+    font-size:.85rem; padding:0; border:0; background:transparent;
+    color:var(--ink); border-radius:0;
   }
   .open-hint{font-size:.75rem; margin-top:8px; color:var(--accent); font-weight:600;}
   .card.is-hidden{display:none;}
@@ -733,6 +741,23 @@ const PROJECT_ORDER = [
 ];
 PROJECTS.sort((a,b)=>PROJECT_ORDER.indexOf(a.id)-PROJECT_ORDER.indexOf(b.id));
 
+const LANG_COLORS = {
+  'JavaScript':'#f1e05a','TypeScript':'#3178c6','Python':'#3572A5','Go':'#00ADD8',
+  'Rust':'#dea584','Dart':'#00B4AB','Flutter':'#02569B','C#':'#178600',
+  'HTML':'#e34c26','CSS':'#563d7c','React':'#61dafb','React Native':'#61dafb',
+  'Expo':'#4630EB','SQLite':'#003B57','Firebase':'#FFCA28','Supabase':'#3ECF8E',
+  'PostgreSQL':'#336791','Redis':'#DC382D','Assembly':'#6E4C13','ASP.NET':'#512BD4',
+  'WinForms':'#178600','Docker':'#2496ED','DevOps':'#EE4F2D','Selenium':'#43B02A',
+  'Postman':'#FF6C37','Django Web API':'#092E20','RapidMiner':'#C8102E',
+  'Arduino IDE':'#00979D','MIT App Inventor':'#0D9DDD','OCR':'#A855F7','Real-time':'#22D3EE'
+};
+function langColor(name){
+  return LANG_COLORS[name] || '#8b5cf6';
+}
+function langTag(name){
+  return `<span class="tag"><span class="tag-dot" style="background:${langColor(name)}"></span>${name}</span>`;
+}
+
 const FILTERS = [
   ['all','Tümü'],['mobil','Mobil'],['web','Web'],['iot','IoT'],
   ['ocr','OCR'],['akademik','Akademik'],['staj','Staj'],['masaüstü','Masaüstü'],['veri','Veri']
@@ -779,7 +804,7 @@ function render(){
       `<div class="card-body">
         <h3>${p.title}</h3>
         <p>${p.text}</p>
-        <div class="tags">${(p.langs||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="tags">${(p.langs||[]).map(langTag).join('')}</div>
         <div class="open-hint">Görselleri aç →</div>
       </div>`;
     btn.addEventListener('click', function(e){
@@ -817,7 +842,7 @@ function openModal(p){
   document.getElementById('modalSub').textContent=p.subtitle||'';
   document.getElementById('modalText').textContent=p.text;
   document.getElementById('modalHighlights').innerHTML=(p.highlights||[]).map(h=>`<li>${h}</li>`).join('');
-  document.getElementById('modalLangs').innerHTML=(p.langs||[]).map(t=>`<span class="lang-chip">${t}</span>`).join('');
+  document.getElementById('modalLangs').innerHTML=(p.langs||[]).map(langTag).join('');
   const a=document.getElementById('modalLink');
   if(p.link){a.href=p.link;a.textContent=p.linkLabel||p.link;a.style.display='inline';}
   else {a.style.display='none';}
@@ -898,8 +923,7 @@ function renderAllLangs(){
   const set = new Set();
   PROJECTS.forEach(p => (p.langs||[]).forEach(l => set.add(l)));
   const list = [...set].sort((a,b)=>a.localeCompare(b,'tr',{sensitivity:'base'}));
-  document.getElementById('allLangs').innerHTML =
-    list.map(t=>`<span class="tag">${t}</span>`).join('');
+  document.getElementById('allLangs').innerHTML = list.map(langTag).join('');
 }
 render();
 renderAllLangs();
