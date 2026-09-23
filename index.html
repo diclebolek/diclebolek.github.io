@@ -172,6 +172,18 @@
   .card p{font-size:.84rem; color:var(--muted); display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
   .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;}
   .tag{font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; color:#ddd6fe; border:1px solid var(--line); padding:3px 8px; border-radius:999px;}
+  .all-langs{
+    margin-top:28px; padding:18px 16px;
+    border:1px solid var(--line); border-radius:16px;
+    background:rgba(255,255,255,.04);
+  }
+  .all-langs .side-label{margin:0 0 12px;}
+  .all-langs .tags{margin-top:0; gap:8px;}
+  .all-langs .tag{
+    font-size:.78rem; padding:6px 12px;
+    background:rgba(255,255,255,.06); color:var(--ink);
+    text-transform:none; letter-spacing:.02em;
+  }
   .open-hint{font-size:.75rem; margin-top:8px; color:var(--accent); font-weight:600;}
   .card.is-hidden{display:none;}
 
@@ -405,6 +417,10 @@
     <p style="color:var(--muted);font-size:.9rem;margin:-8px 0 14px;">Karta tıklayınca görseller ve kullanılan diller açılır.</p>
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
+    <div class="all-langs">
+      <div class="side-label">Projelerde kullanılan diller</div>
+      <div class="tags" id="allLangs"></div>
+    </div>
 
     <h2 style="margin-top:36px;">Sertifikalar</h2>
     <ul class="certs">
