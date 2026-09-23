@@ -692,12 +692,28 @@ const PROJECTS = [
     text:'Rust’u Türkçe, adım adım öğreten interaktif atölye sitesi. Yol haritası 28 duraktan oluşuyor; her derste kısa açıklama, çalışan kod örneği ve mini alıştırma var. İlerleme, arama ve “kaldığın yerden devam et” ile takip edilir.',
     highlights:['28 derslik yol haritası','Kod örneği + alıştırma','İlerleme ve arama'],
     link:'https://diclebolek.github.io/rust_my_site/', linkLabel:'Canlı site'
+  },
+  {
+    id:'metis', num:'14', eyebrow:'Web · Gerçek zamanlı',
+    title:'Metis',
+    subtitle:'Go + Rust + Redis sohbet platformu',
+    cats:['web'],
+    langs:['Go','Rust','Redis','JavaScript'],
+    cover:'assets/projects/metis_intro.mp4',
+    images:[
+      'assets/projects/metis_intro.mp4',
+      'assets/projects/metis_02.png',
+      'assets/projects/metis_03.png'
+    ],
+    text:'Gerçek zamanlı sohbet: Go WebSocket gateway, Rust mesaj işçisi ve Redis (Streams, Pub/Sub, oturum, varlık, hız sınırı). Ayrı SQL yok; süreli odalar TTL ile silinir. Odalar + DM split panel, kaybolan mesaj, reaksiyon, alıntı, dosya paylaşımı ve odak durumu var.',
+    highlights:['Go gateway + Rust worker + Redis','Süreli odalar ve kaybolan mesaj','Split panel, presence, rate limit'],
+    link:'https://github.com/diclebolek/Metis', linkLabel:'GitHub'
   }
 ];
 
 const PROJECT_ORDER = [
   'karbon','ilac','ocr','focusflow',
-  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom','rustjourney'
+  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom','rustjourney','metis'
 ];
 PROJECTS.sort((a,b)=>PROJECT_ORDER.indexOf(a.id)-PROJECT_ORDER.indexOf(b.id));
 
