@@ -894,7 +894,15 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')step(-1);
   if(e.key==='ArrowRight')step(1);
 });
+function renderAllLangs(){
+  const set = new Set();
+  PROJECTS.forEach(p => (p.langs||[]).forEach(l => set.add(l)));
+  const list = [...set].sort((a,b)=>a.localeCompare(b,'tr',{sensitivity:'base'}));
+  document.getElementById('allLangs').innerHTML =
+    list.map(t=>`<span class="tag">${t}</span>`).join('');
+}
 render();
+renderAllLangs();
 </script>
 </body>
 </html>
