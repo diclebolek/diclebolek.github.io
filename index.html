@@ -717,12 +717,29 @@ const PROJECTS = [
     text:'Gerçek zamanlı sohbet: Go WebSocket gateway, Rust mesaj işçisi ve Redis (Streams, Pub/Sub, oturum, varlık, hız sınırı). Ayrı SQL yok; süreli odalar TTL ile silinir. Odalar + DM split panel, kaybolan mesaj, reaksiyon, alıntı, dosya paylaşımı ve odak durumu var.',
     highlights:['Go gateway + Rust worker + Redis','Süreli odalar ve kaybolan mesaj','Split panel, presence, rate limit'],
     link:'https://github.com/diclebolek/Metis', linkLabel:'GitHub'
+  },
+  {
+    id:'safepoint', num:'15', eyebrow:'Kubernetes · Operator',
+    title:'Safepoint',
+    subtitle:'Kubernetes backup operator',
+    cats:['web'],
+    langs:['Go','Kubernetes','Helm','Prometheus','Grafana'],
+    cover:'assets/projects/safepoint_01.png',
+    coverPos:'center top',
+    images:[
+      'assets/projects/safepoint_01.png',
+      'assets/projects/safepoint_02.png',
+      'assets/projects/safepoint_03.png'
+    ],
+    text:'Kubernetes üzerinde BackupSchedule ile Postgres ve Redis yedeklerini S3/MinIO’ya alan operator. BackupRestore, DestinationProfile, validating webhook ve AES şifreleme ile güvenli geri yükleme; Prometheus metrikleri ve Grafana panoları, Helm chart ve cosign imzalı dağıtım desteklenir.',
+    highlights:['Zamanlanmış yedek + S3/MinIO','Validating webhook','Prometheus / Grafana'],
+    link:'https://github.com/diclebolek/Safepoint', linkLabel:'GitHub'
   }
 ];
 
 const PROJECT_ORDER = [
   'karbon','ilac','ocr','focusflow',
-  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom','rustjourney','metis'
+  'mira','gnp','invento','codesentinel','sirius','arac','lda','insucom','rustjourney','metis','safepoint'
 ];
 PROJECTS.sort((a,b)=>PROJECT_ORDER.indexOf(a.id)-PROJECT_ORDER.indexOf(b.id));
 
@@ -734,7 +751,8 @@ const LANG_COLORS = {
   'PostgreSQL':'#336791','Redis':'#DC382D','Assembly':'#6E4C13','ASP.NET':'#512BD4',
   'WinForms':'#178600','Docker':'#2496ED','DevOps':'#EE4F2D','Selenium':'#43B02A',
   'Postman':'#FF6C37','Django Web API':'#092E20','RapidMiner':'#C8102E',
-  'Arduino IDE':'#00979D','MIT App Inventor':'#0D9DDD','OCR':'#A855F7','Real-time':'#22D3EE'
+  'Arduino IDE':'#00979D','MIT App Inventor':'#0D9DDD','OCR':'#A855F7','Real-time':'#22D3EE',
+  'Kubernetes':'#326CE5','Helm':'#0F1689','Prometheus':'#E6522C','Grafana':'#F46800'
 };
 function langColor(name){
   return LANG_COLORS[name] || '#8b5cf6';
