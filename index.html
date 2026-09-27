@@ -181,17 +181,6 @@
     width:10px; height:10px; border-radius:50%; flex-shrink:0;
     box-shadow:0 0 0 1px rgba(255,255,255,.15);
   }
-  .all-langs{
-    margin-top:28px; padding:18px 16px;
-    border:1px solid var(--line); border-radius:16px;
-    background:rgba(255,255,255,.04);
-  }
-  .all-langs .side-label{margin:0 0 12px;}
-  .all-langs .tags{margin-top:0; gap:10px 14px;}
-  .all-langs .tag{
-    font-size:.85rem; padding:0; border:0; background:transparent;
-    color:var(--ink); border-radius:0;
-  }
   .open-hint{font-size:.75rem; margin-top:8px; color:var(--accent); font-weight:600;}
   .card.is-hidden{display:none;}
 
@@ -425,10 +414,6 @@
     <p style="color:var(--muted);font-size:.9rem;margin:-8px 0 14px;">Karta tıklayınca görseller ve kullanılan diller açılır.</p>
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
-    <div class="all-langs">
-      <div class="side-label">Projelerde kullanılan diller</div>
-      <div class="tags" id="allLangs"></div>
-    </div>
 
     <h2 style="margin-top:36px;">Sertifikalar</h2>
     <ul class="certs">
@@ -491,7 +476,7 @@ const PROJECTS = [
     title:'Karbon Ayak İzi',
     subtitle:'Gerçek zamanlı su, gaz ve elektrik takibi',
     cats:['iot','web','mobil','ocr','akademik'],
-    langs:['Dart','Flutter','Assembly','OCR','Real-time'],
+    langs:['Dart','Flutter','Assembly','OCR','Real-time','Firebase'],
     cover:'assets/projects/karbon_ayak_izi.png',
     images:[
       'assets/projects/karbon_ayak_izi.png',
@@ -919,14 +904,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')step(-1);
   if(e.key==='ArrowRight')step(1);
 });
-function renderAllLangs(){
-  const set = new Set();
-  PROJECTS.forEach(p => (p.langs||[]).forEach(l => set.add(l)));
-  const list = [...set].sort((a,b)=>a.localeCompare(b,'tr',{sensitivity:'base'}));
-  document.getElementById('allLangs').innerHTML = list.map(langTag).join('');
-}
 render();
-renderAllLangs();
 </script>
 </body>
 </html>
